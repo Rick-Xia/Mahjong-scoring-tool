@@ -4,27 +4,65 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
+	body {
+		background-color: #f7f9f9;
+	}
+
 	table {
     	font-family: arial, sans-serif;
     	border-collapse: collapse;
     	width: 100%;
+    	background-color: #e0d0c1;
 	}
 
 	td, th {
-    	border: 1px solid #dddddd;
+    	border: 1px solid #a76d60;
     	text-align: center;
     	padding: 8px;
 	}
 
-	tr:nth-child(even) {
-    	background-color: #ffffff;
-	}
 </style>
 </head>
+
 <body>
 
 	<a href="index.html">back to main page</a>
-	<table>
+	<br>
+
+	<div style="margin:20px">
+		<style>
+			ul {
+    			list-style-type: none;
+			    margin: 0;
+    			padding: 0;
+    			overflow: hidden;
+    			background-color: #601700;
+			}
+
+			li {
+    			float: left;
+			}
+
+			li a {
+    			display: block;
+    			color: white;
+    			text-align: center;
+    			padding: 16px;
+    			text-decoration: none;
+			}
+
+			li a:hover {
+    			background-color: #a76d60;
+			}
+		</style>
+
+		<ul >
+			<li> <a href="#D">Dealer table</a></li>
+			<li> <a href="#ND">non-Dealer table</a></li>
+		</ul>
+	</div>
+
+	<table id="D">
 		<caption><h1>Scoring of Dealer</h1></caption>
 		<tr>
 			<th>飜han/符fu</th>
@@ -117,7 +155,7 @@
 		</tr>
 	</table>
 
-	<table>
+	<table id="ND">
 		<caption><h1>Scoring of non-Dealer</h1></caption>
 		<tr>
 			<th>飜han/符fu</th>
@@ -209,7 +247,7 @@
 			<td colspan="11"><b>役満</b><br>32000<br>(8000, 16000)</td>
 		</tr>
 	</table>
-
+	<br>
 	<a href="index.html">back to main page</a>
 </body>
 </html>
