@@ -12,18 +12,43 @@
 	</style>
 
 	<script type="text/javascript">
-		var index = 0;
+		var indexId = 0; // id for tiles
+		var num = 0; // count of tiles in hand
+
+		function alert() {
+			document.getElementById("msg").innerHTML = "too many tiles in hand!";
+		}
+
+		function refreshMsg() {
+			document.getElementById("msg").innerHTML = "";
+		}
+
 		function add(name) {
+			if ( num >= 13 ) {
+				return alert();
+			}
 			var element = document.createElement("button");
 			element.type = "button";
-			element.value = "b";
+			element.id = indexId;
 			element.innerHTML = name;
+			element.onclick = function () {
+				remove(element.id);
+			};
 
 			var tefuda = document.getElementById("hand");
 			tefuda.appendChild(element);
-			
-			index++;
-			document.getElementById("i").innerHTML = index;
+
+			indexId++;
+			num++;
+			document.getElementById("i").innerHTML = indexId;
+		}
+
+		function remove(id) {
+			var element = document.getElementById(id);
+			var hand = document.getElementById("hand");
+			hand.removeChild(element);
+			num--;
+			return refreshMsg();
 		}
 	</script>
 </head>
@@ -53,6 +78,7 @@
 	<div>
 		<p id="hand">Hand: </p>
 		<p>index = <span id="i">0</span></p>
+		<p>message: <span id="msg"></span></p>
 	</div>
 
 </body>
