@@ -6,8 +6,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 	body {
-		#text-align: center;
+		# text-align: center;
 		background-color: #F7F9F9;
+	}
+	ul {
+    	list-style-type: none;
+    	overflow: hidden;
+	}
+	li {
+    	float: left;
+	}
+	button img {
+		# original ratio = 210 / 255
+		width: 44px;
+		height: 53px;
 	}
 	</style>
 
@@ -71,24 +83,10 @@
 
 <body>
 
-	<a href="index.html" float="left">back to main page</a>
+	<a href="index.html">back to main page</a>
 	<br />
 
 	<div style="margin:20px">
-		<style>
-			ul {
-    			list-style-type: none;
-    			overflow: hidden;
-			}
-			li {
-    			float: left;
-			}
-			button img {
-				# original ratio = 210 / 255
-				width: 44px;
-				height: 53px;
-			}
-		</style>
 		<ul>
 			<li><button type="button" id="1p" onclick="add(id)"><img src="img/1p.svg" alt="1p" /></button></li>
 			<li><button type="button" id="2p" onclick="add(id)"><img src="img/2p.svg" alt="1p" /></button></li>
