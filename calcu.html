@@ -17,7 +17,6 @@
     	float: left;
 	}
 	button img {
-		# original ratio = 210 / 255
 		width: 44px;
 		height: 53px;
 	}
@@ -51,6 +50,8 @@
 		}
 
 		function add(name) {
+			console.log(name);
+
 			if ( num >= 13 ) {
 				return alert();
 			}
@@ -79,16 +80,30 @@
 			return refreshMsg();
 		}
 
-		function tileGenerate(type) {
-			var list = document.getElementById(type), count = 1;
-			var sublist = document.createElement("li");
+		function buttonCreate(name) {
 			var button = document.createElement("button");
 			button.type = "button";
-			button.id = count + type;
-			button.onclick = "add(" + button.id + ")";
-			button.innerHTML = '<img src="img/' + name + '.png" />';
+			button.id = name;
+			console.log(button.id);
+			button.onclick = function () {
+				add(button.id);
+			};
 
-			list.appendChild();
+			button.innerHTML = '<img src="img/' + button.id + '.png" />';
+			return button;
+		}
+
+		function tileGenerate(type) {
+			var list = document.getElementById(type), count = 1;
+
+			while ( count <= 9 ) {
+				var button = buttonCreate(count + type);
+				var sublist = document.createElement("li");
+				sublist.appendChild(button);
+
+				list.appendChild(sublist);
+				count++;
+			}
 		}
 	</script>
 </head>
@@ -111,11 +126,13 @@
 			<li><button type="button" id="9p" onclick="add(id)"><img src="img/9p.png" alt="1p" /></button></li>
 		</ul>
 		<ul id="s">
-			<li><button type="button" id="1s" onclick="add(id)"><img src="img/1s.png" alt="1s" /></button></li>
+			<!-- <li><button type="button" id="1s" onclick="add(id)"><img src="img/1s.png" alt="1s" /></button></li> -->
 		</ul>
 		<ul id="m">
 			<li><button type="button" id="1m" onclick="add(id)"><img src="img/1m.png" alt="1m" /></button></li>
 		</ul>
+		<script type="text/javascript">tileGenerate("s");</script>
+
 	</div>
 
 	<div>
