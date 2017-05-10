@@ -58,7 +58,7 @@
 			element.type = "button";
 			element.id = indexId;
 
-			element.innerHTML = '<img src="img/' + name + '.svg" />';
+			element.innerHTML = '<img src="img/' + name + '.png" />';
 			element.onclick = function () {
 				remove(element.id);
 			};
@@ -78,6 +78,18 @@
 			num--;
 			return refreshMsg();
 		}
+
+		function tileGenerate(type) {
+			var list = document.getElementById(type), count = 1;
+			var sublist = document.createElement("li");
+			var button = document.createElement("button");
+			button.type = "button";
+			button.id = count + type;
+			button.onclick = "add(" + button.id + ")";
+			button.innerHTML = '<img src="img/' + name + '.png" />';
+
+			list.appendChild();
+		}
 	</script>
 </head>
 
@@ -87,21 +99,21 @@
 	<br />
 
 	<div style="margin:20px">
-		<ul>
-			<li><button type="button" id="1p" onclick="add(id)"><img src="img/1p.svg" alt="1p" /></button></li>
-			<li><button type="button" id="2p" onclick="add(id)"><img src="img/2p.svg" alt="1p" /></button></li>
-			<li><button type="button" id="3p" onclick="add(id)"><img src="img/3p.svg" alt="1p" /></button></li>
-			<li><button type="button" id="4p" onclick="add(id)"><img src="img/4p.svg" alt="1p" /></button></li>
-			<li><button type="button" id="5p" onclick="add(id)"><img src="img/5p.svg" alt="1p" /></button></li>
-			<li><button type="button" id="6p" onclick="add(id)"><img src="img/6p.svg" alt="1p" /></button></li>
-			<li><button type="button" id="7p" onclick="add(id)"><img src="img/7p.svg" alt="1p" /></button></li>
-			<li><button type="button" id="8p" onclick="add(id)"><img src="img/8p.svg" alt="1p" /></button></li>
-			<li><button type="button" id="9p" onclick="add(id)"><img src="img/9p.svg" alt="1p" /></button></li>
+		<ul id="p">
+			<li><button type="button" id="1p" onclick="add(id)"><img src="img/1p.png" alt="1p" /></button></li>
+			<li><button type="button" id="2p" onclick="add(id)"><img src="img/2p.png" alt="1p" /></button></li>
+			<li><button type="button" id="3p" onclick="add(id)"><img src="img/3p.png" alt="1p" /></button></li>
+			<li><button type="button" id="4p" onclick="add(id)"><img src="img/4p.png" alt="1p" /></button></li>
+			<li><button type="button" id="5p" onclick="add(id)"><img src="img/5p.png" alt="1p" /></button></li>
+			<li><button type="button" id="6p" onclick="add(id)"><img src="img/6p.png" alt="1p" /></button></li>
+			<li><button type="button" id="7p" onclick="add(id)"><img src="img/7p.png" alt="1p" /></button></li>
+			<li><button type="button" id="8p" onclick="add(id)"><img src="img/8p.png" alt="1p" /></button></li>
+			<li><button type="button" id="9p" onclick="add(id)"><img src="img/9p.png" alt="1p" /></button></li>
 		</ul>
-		<ul>
+		<ul id="s">
 			<li><button type="button" id="1s" onclick="add(id)"><img src="img/1s.png" alt="1s" /></button></li>
 		</ul>
-		<ul>
+		<ul id="m">
 			<li><button type="button" id="1m" onclick="add(id)"><img src="img/1m.png" alt="1m" /></button></li>
 		</ul>
 	</div>
