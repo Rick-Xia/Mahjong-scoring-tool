@@ -10,7 +10,52 @@
 		background-color: #F7F9F9;
 	}
 	</style>
+
+	<script type="text/javascript">
+		var index = 0;
+		function add(name) {
+			var element = document.createElement("button");
+			element.type = "button";
+			element.value = "b";
+			element.innerHTML = name;
+
+			var tefuda = document.getElementById("hand");
+			tefuda.appendChild(element);
+			
+			index++;
+			document.getElementById("i").innerHTML = index;
+		}
+	</script>
 </head>
+
+<body>
+	<div style="margin:20px">
+		<style>
+			ul {
+    			list-style-type: none;
+    			overflow: hidden;
+			}
+			li {
+    			float: left;
+			}
+			button {
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+		<ul>
+			<li><button type="button" id="1p" onclick="add(id)">1p</button></li>
+			<li><button type="button" id="2p" onclick="add(id)">2p</button></li>
+			<li><button type="button" id="3p" onclick="add(id)">3p</button></li>
+		</ul>
+	</div>
+
+	<div>
+		<p id="hand">Hand: </p>
+		<p>index = <span id="i">0</span></p>
+	</div>
+
+</body>
 
 
 </html>
