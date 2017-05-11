@@ -17,7 +17,6 @@
     	float: left;
 	}
 	button img {
-		# original ratio = 210 / 255
 		width: 44px;
 		height: 53px;
 	}
@@ -51,24 +50,20 @@
 		}
 
 		function add(name) {
-			if ( num >= 13 ) {
-				return alert();
-			}
-			var element = document.createElement("button");
-			element.type = "button";
-			element.id = indexId;
+			if ( num >= 13 )  return alert();
 
-			element.innerHTML = '<img src="img/' + name + '.png" />';
-			element.onclick = function () {
-				remove(element.id);
+			var buttonTemp = buttonCreate(name);
+			buttonTemp.id = indexId;
+			buttonTemp.onclick = function () {
+				remove(buttonTemp.id);
 			};
 
 			var tefuda = document.getElementById("hand");
-			tefuda.appendChild(element);
+			tefuda.appendChild(buttonTemp);
 
 			indexId++;
 			num++;
-			document.getElementById("i").innerHTML = indexId;
+			// document.getElementById("i").innerHTML = indexId;
 		}
 
 		function remove(id) {
@@ -79,16 +74,30 @@
 			return refreshMsg();
 		}
 
-		function tileGenerate(type) {
-			var list = document.getElementById(type), count = 1;
-			var sublist = document.createElement("li");
+		function buttonCreate(name) {
 			var button = document.createElement("button");
 			button.type = "button";
-			button.id = count + type;
-			button.onclick = "add(" + button.id + ")";
-			button.innerHTML = '<img src="img/' + name + '.png" />';
+			button.name = name;
+			console.log(button.name);
+			button.onclick = function () {
+				add(button.name);
+			};
 
-			list.appendChild();
+			button.innerHTML = '<img src="img/' + button.name + '.png" />';
+			return button;
+		}
+
+		function tileGenerate(type) {
+			var list = document.getElementById(type), count = 1;
+
+			while ( count <= 9 ) {
+				var button = buttonCreate(count + type);
+				var sublist = document.createElement("li");
+				sublist.appendChild(button);
+
+				list.appendChild(sublist);
+				count++;
+			}
 		}
 	</script>
 </head>
@@ -99,28 +108,18 @@
 	<br />
 
 	<div style="margin:20px">
-		<ul id="p">
-			<li><button type="button" id="1p" onclick="add(id)"><img src="img/1p.png" alt="1p" /></button></li>
-			<li><button type="button" id="2p" onclick="add(id)"><img src="img/2p.png" alt="1p" /></button></li>
-			<li><button type="button" id="3p" onclick="add(id)"><img src="img/3p.png" alt="1p" /></button></li>
-			<li><button type="button" id="4p" onclick="add(id)"><img src="img/4p.png" alt="1p" /></button></li>
-			<li><button type="button" id="5p" onclick="add(id)"><img src="img/5p.png" alt="1p" /></button></li>
-			<li><button type="button" id="6p" onclick="add(id)"><img src="img/6p.png" alt="1p" /></button></li>
-			<li><button type="button" id="7p" onclick="add(id)"><img src="img/7p.png" alt="1p" /></button></li>
-			<li><button type="button" id="8p" onclick="add(id)"><img src="img/8p.png" alt="1p" /></button></li>
-			<li><button type="button" id="9p" onclick="add(id)"><img src="img/9p.png" alt="1p" /></button></li>
-		</ul>
-		<ul id="s">
-			<li><button type="button" id="1s" onclick="add(id)"><img src="img/1s.png" alt="1s" /></button></li>
-		</ul>
-		<ul id="m">
-			<li><button type="button" id="1m" onclick="add(id)"><img src="img/1m.png" alt="1m" /></button></li>
-		</ul>
+		<ul id="p"></ul>
+		<ul id="s"></ul>
+		<ul id="m"></ul>
+
+		<script type="text/javascript">tileGenerate("p");</script>
+		<script type="text/javascript">tileGenerate("s");</script>
+		<script type="text/javascript">tileGenerate("m");</script>
 	</div>
 
 	<div>
 		<p>Hand: <span id="hand"></span></p>
-		<p>index = <span id="i">0</span></p>
+		<!-- p>index = <span id="i">0</span></p-->
 		<p>message: <span id="msg"></span></p>
 		<button type="button" onclick="calc()">Calculate!</button>
 		<p>result: <span id="result"></span></p>
