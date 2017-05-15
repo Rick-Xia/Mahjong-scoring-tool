@@ -25,6 +25,8 @@
 	<script type="text/javascript">
 		var indexId = 0; // id for tiles
 		var num = 0; // count of tiles in hand
+		var cur = 0;
+		var sublistId = 0;
 
 		function alert() {
 			document.getElementById("msg").innerHTML = "too many tiles in hand!";
@@ -39,43 +41,54 @@
 		}
 
 		function clearAll() {
-			var hand = document.getElementById("hand");
+			var hand = document.getElementById("hand"), open = document.getElementById("open");
 			while ( hand.firstChild ) {
 				hand.removeChild(hand.firstChild);
 				num--;
+			}
+			while ( open.firstChild ) {
+				open.removeChild(open.firstChild);
 			}
 			refreshMsg();
 			refreshResult();
 		}
 
 		function calc() {
-			var ret = document.getElementById("result");
 
+
+			var ret = document.getElementById("result");
 			ret.innerHTML = "0";
 		}
 
 		function add(name) {
+
 			if ( num >= 13 )  return alert();
 
 			var buttonTemp = buttonCreate(name);
 			buttonTemp.id = indexId;
+			var currentPlace = cur;
 			buttonTemp.onclick = function () {
-				remove(buttonTemp.id);
+				remove(buttonTemp.id, currentPlace);
 			};
 
-			var tefuda = document.getElementById("hand");
-			tefuda.appendChild(buttonTemp);
+			if ( cur.id == "wait" && cur.firstChild != null ) {
+				cur.replaceChild(buttonTemp, cur.firstChild);
+				return;
+			}
 
-			indexId++;
-			num++;
-			// document.getElementById("i").innerHTML = indexId;
+			cur.appendChild(buttonTemp);
+
+			if ( cur.id == "hand" ) {
+				indexId++;
+				num++;
+			}
 		}
 
-		function remove(id) {
+		function remove(id, place) {
 			var element = document.getElementById(id);
-			var hand = document.getElementById("hand");
-			hand.removeChild(element);
+			place.removeChild(element);
 			num--;
+
 			return refreshMsg();
 		}
 
@@ -103,6 +116,35 @@
 				count++;
 			}
 		}
+
+		function addOpen() {
+			changeCur("open");
+			var list = document.createElement("ul");
+			list.id = "openlist" + sublistId;
+
+			var sublFn = document.createElement("li");
+			var sublTile = document.createElement("li");
+			sublTile.id = "sublist" + sublistId;
+
+			var button = document.createElement("button");
+			button.type = "button";
+			button.innerHTML = "Delete";
+
+			sublFn.appendChild(button);
+			
+			list.appendChild(sublFn);
+			list.appendChild(sublTile);
+			cur.appendChild(list);
+
+			sublistId++;
+			changeCur(sublTile.id);
+		}
+
+		function changeCur(id) {
+			cur = document.getElementById(id);
+			console.log("cur is " + id);
+		}
+
 	</script>
 </head>
 
@@ -119,16 +161,22 @@
 		<script type="text/javascript">tileGenerate("p");</script>
 		<script type="text/javascript">tileGenerate("s");</script>
 		<script type="text/javascript">tileGenerate("m");</script>
+		<button type="button" onclick="addOpen()">Add an open</button>
 	</div>
 
 	<div>
 		<p>Hand: <span id="hand"></span></p>
-		<!-- p>index = <span id="i">0</span></p-->
+		<p>Wait: <button type="button" onclick="changeCur('wait')">WAIT</button><span id="wait"></span></p>
+		<p>Open: <span id="open"></span></p>
 		<p>message: <span id="msg"></span></p>
 		<button type="button" onclick="calc()">Calculate!</button>
 		<p>result: <span id="result"></span></p>
 		<button type="button" onclick="clearAll()">Clear all</button>
 	</div>
+
+	<script type="text/javascript">
+		cur = document.getElementById("hand");
+	</script>
 
 </body>
 
