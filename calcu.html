@@ -26,6 +26,7 @@
 		var indexId = 0; // id for tiles
 		var num = 0; // count of tiles in hand
 		var cur = 0;
+		var sublistId = 0;
 
 		function alert() {
 			document.getElementById("msg").innerHTML = "too many tiles in hand!";
@@ -60,7 +61,7 @@
 		}
 
 		function add(name) {
-			
+
 			if ( num >= 13 )  return alert();
 
 			var buttonTemp = buttonCreate(name);
@@ -117,16 +118,26 @@
 		}
 
 		function addOpen() {
-			var open = document.getElementById("open");
-			var list = document.createElement("p");
-			list.innerHTML = "html";
-			list.onclick = "clearAll()";
-			//var sublist = document.createElement("li");
-			//sublist.innerHTML = "123";
-			//list.onclick = "clearAll()";
-			//list.appendChild(sublist);
-			//list.style = "list-style-type:none;";
-			open.appendChild(list);
+			changeCur("open");
+			var list = document.createElement("ul");
+			list.id = "openlist" + sublistId;
+
+			var sublFn = document.createElement("li");
+			var sublTile = document.createElement("li");
+			sublTile.id = "sublist" + sublistId;
+
+			var button = document.createElement("button");
+			button.type = "button";
+			button.innerHTML = "Delete";
+
+			sublFn.appendChild(button);
+			
+			list.appendChild(sublFn);
+			list.appendChild(sublTile);
+			cur.appendChild(list);
+
+			sublistId++;
+			changeCur(sublTile.id);
 		}
 
 		function changeCur(id) {
