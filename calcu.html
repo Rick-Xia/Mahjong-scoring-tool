@@ -34,13 +34,18 @@
 			document.getElementById("msg").innerHTML = "";
 		}
 
+		function refreshResult() {
+			document.getElementById("result").innerHTML = "";
+		}
+
 		function clearAll() {
 			var hand = document.getElementById("hand");
 			while ( hand.firstChild ) {
 				hand.removeChild(hand.firstChild);
 				num--;
-				refreshMsg();
 			}
+			refreshMsg();
+			refreshResult();
 		}
 
 		function calc() {
@@ -78,7 +83,6 @@
 			var button = document.createElement("button");
 			button.type = "button";
 			button.name = name;
-			console.log(button.name);
 			button.onclick = function () {
 				add(button.name);
 			};
