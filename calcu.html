@@ -27,9 +27,18 @@
 		var num = 0; // count of tiles in hand
 		var cur = 0;
 		var sublistId = 0;
+		var numOpen = 0;
 
-		function alert() {
-			document.getElementById("msg").innerHTML = "too many tiles in hand!";
+		function alertTooManyTile() {
+			document.getElementById("msg").innerHTML = "too many tiles in hand! Maximum is 13(hand) + 1(wait)";
+		}
+
+		function alertTooManyOpen() {
+			document.getElementById("msg").innerHTML = "too many opens! Maximum is 4";
+		}
+
+		function alertTooManyTileForAnOpen() {
+			document.getElementById("msg").innerHTML = "To add an open, there should be at least 3 tiles free. Now you have " + (13 - num) + " free";
 		}
 
 		function refreshMsg() {
@@ -41,7 +50,9 @@
 		}
 
 		function clearAll() {
-			var hand = document.getElementById("hand"), open = document.getElementById("open");
+			var hand = document.getElementById("hand"),
+				open = document.getElementById("open"),
+				wait = document.getElementById("wait");
 			while ( hand.firstChild ) {
 				hand.removeChild(hand.firstChild);
 				num--;
@@ -49,8 +60,11 @@
 			while ( open.firstChild ) {
 				open.removeChild(open.firstChild);
 			}
+			while ( wait.firstChild ) {
+				wait.removeChild(wait.firstChild);
+			}
 			refreshMsg();
-			refreshResult();
+			return refreshResult();
 		}
 
 		function calc() {
@@ -61,11 +75,12 @@
 		}
 
 		function add(name) {
-
-			if ( num >= 13 )  return alert();
+			
+			if ( cur.id == "hand" && num >= 13 )  return alertTooManyTile();
+			refreshMsg();
 
 			var buttonTemp = buttonCreate(name);
-			buttonTemp.id = indexId;
+			buttonTemp.id = indexId++;
 			var currentPlace = cur;
 			buttonTemp.onclick = function () {
 				remove(buttonTemp.id, currentPlace);
@@ -78,17 +93,13 @@
 
 			cur.appendChild(buttonTemp);
 
-			if ( cur.id == "hand" ) {
-				indexId++;
-				num++;
-			}
+			if ( cur.id == "hand" ) num++;
 		}
 
 		function remove(id, place) {
 			var element = document.getElementById(id);
 			place.removeChild(element);
 			num--;
-
 			return refreshMsg();
 		}
 
@@ -117,7 +128,19 @@
 			}
 		}
 
+		function deleteOpen(id) {
+			var open = document.getElementById("open");
+			var child = document.getElementById(id);
+			open.removeChild(child);
+			numOpen--;
+			num -= 3;
+			return refreshMsg();
+		}
+
 		function addOpen() {
+			if ( numOpen >= 4 ) return alertTooManyOpen();
+			if ( num > 11 ) return alertTooManyTileForAnOpen();
+
 			changeCur("open");
 			var list = document.createElement("ul");
 			list.id = "openlist" + sublistId;
@@ -126,17 +149,29 @@
 			var sublTile = document.createElement("li");
 			sublTile.id = "sublist" + sublistId;
 
-			var button = document.createElement("button");
-			button.type = "button";
-			button.innerHTML = "Delete";
+			var buttonDel= document.createElement("button");
+			buttonDel.type = "button";
+			buttonDel.innerHTML = "Delete";
+			buttonDel.onclick = function () {
+				deleteOpen(list.id);
+			};
+			sublFn.appendChild(buttonDel);
 
-			sublFn.appendChild(button);
+			var buttonSel = document.createElement("button");
+			buttonSel.type = "button";
+			buttonSel.innerHTML = "Select";
+			buttonSel.onclick = function () {
+				changeCur(sublTile.id);
+			};
+			sublFn.appendChild(buttonSel);
 			
 			list.appendChild(sublFn);
 			list.appendChild(sublTile);
 			cur.appendChild(list);
 
 			sublistId++;
+			numOpen++;
+			num += 3;
 			changeCur(sublTile.id);
 		}
 
@@ -161,13 +196,14 @@
 		<script type="text/javascript">tileGenerate("p");</script>
 		<script type="text/javascript">tileGenerate("s");</script>
 		<script type="text/javascript">tileGenerate("m");</script>
-		<button type="button" onclick="addOpen()">Add an open</button>
+		
 	</div>
 
 	<div>
-		<p>Hand: <span id="hand"></span></p>
-		<p>Wait: <button type="button" onclick="changeCur('wait')">WAIT</button><span id="wait"></span></p>
-		<p>Open: <span id="open"></span></p>
+		<p>Hand: <button type="button" onclick="changeCur('hand')">SELECT</button><span id="hand"></span></p>
+		<p>Wait: <button type="button" onclick="changeCur('wait')">SELECT</button><span id="wait"></span></p>
+		<p>Open: <button type="button" onclick="addOpen()">Add an open</button>
+			<span id="open"></span></p>
 		<p>message: <span id="msg"></span></p>
 		<button type="button" onclick="calc()">Calculate!</button>
 		<p>result: <span id="result"></span></p>
