@@ -22,6 +22,7 @@
 	}
 	</style>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		var indexId = 0; // id for tiles
 		var num = 0; // count of tiles in hand
@@ -188,6 +189,15 @@
 			cur = document.getElementById(id);
 		}
 
+		$( document ).ready(function() {
+			cur = document.getElementById("hand");
+			tileGenerate("p");
+			tileGenerate("s");
+			tileGenerate("m");
+			tileGenerate("f");
+			tileGenerate("g");
+    		console.log( "ready!" );
+		});
 	</script>
 </head>
 
@@ -202,13 +212,6 @@
 		<ul id="m"></ul>
 		<ul id="f"></ul>
 		<ul id="g"></ul>
-
-		<script type="text/javascript">tileGenerate("p");</script>
-		<script type="text/javascript">tileGenerate("s");</script>
-		<script type="text/javascript">tileGenerate("m");</script>
-		<script type="text/javascript">tileGenerate("f");</script>
-		<script type="text/javascript">tileGenerate("g");</script>
-		
 	</div>
 
 	<div>
@@ -217,21 +220,36 @@
 		<p>Open: <button type="button" onclick="addOpen()">Add an open</button>
 			<span id="open"></span></p>
 
-		<p>Prevailing wind: <button type="button" onclick="changeCur('cwind')">SELECT</button><span id="cwind"></span></p>
-		<p>Player's wind: <button type="button" onclick="changeCur('zwind')">SELECT</button><span id="zwind"></span></p>
+		<p>Prevailing wind: <button type="button" onclick="changeCur('cwind')">SELECT</button>
+			<span id="cwind"></span></p>
+		<p>Player's wind: <button type="button" onclick="changeCur('zwind')">SELECT</button>
+			<span id="zwind"></span></p>
+	</div>
 
+	<div style="margin:20px">
+		<form action="">
+  			<input type="radio" name="readyHand" value="0" checked="checked">non-Ready Hand
+  			<input type="radio" name="readyHand" value="1"> Ready Hand
+  			<input type="radio" name="readyHand" value="2"> Double Ready<br />
+
+  			<input type="radio" name="last" value="1">Last Discard
+  			<input type="radio" name="last" value="2">Last Tile
+  			<input type="radio" name="last" value="0" checked="checked">none<br />
+
+		<!--form action="action_page.php" method="get"-->
+  			<input type="checkbox" name="self" value="sp">Self-Pick
+  			<input type="checkbox" name="deaddraw" value="dd">Dead Wall Draw
+  			<input type="checkbox" name="oneshot" value="os">One-Shot<br />
+  			<!--input type="submit" value="Submit"-->
+		</form>
+	</div>
+		
+	<div>	
 		<button type="button" onclick="calc()">Calculate!</button>
 		<button type="button" onclick="clearAll()">Clear all</button>
-			
 		<p>result: <span id="result"></span></p>
 		<p>message: <span id="msg"></span></p>
 	</div>
 
-	<script type="text/javascript">
-		cur = document.getElementById("hand");
-	</script>
-
 </body>
-
-
 </html>
