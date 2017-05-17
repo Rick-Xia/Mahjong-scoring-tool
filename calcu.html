@@ -30,7 +30,7 @@
 		var numOpen = 0;
 
 		function alertTooManyTile() {
-			document.getElementById("msg").innerHTML = "too many tiles in hand! Maximum is 13(hand) + 1(wait)";
+			document.getElementById("msg").innerHTML = "too many tiles in hand! Maximum is 13(hand+open) + 1(wait)";
 		}
 
 		function alertTooManyOpen() {
@@ -116,9 +116,22 @@
 		}
 
 		function tileGenerate(type) {
-			var list = document.getElementById(type), count = 1;
+			var list = document.getElementById(type), count = 1, max = 0;
+			switch (type) {
+				case "m":
+				case "s":
+				case "p":
+					max = 9;
+					break;
+				case "f":
+					max = 4;
+					break;
+				case "g":
+					max = 3;
+					break;
+			}
 
-			while ( count <= 9 ) {
+			while ( count <= max ) {
 				var button = buttonCreate(count + type);
 				var sublist = document.createElement("li");
 				sublist.appendChild(button);
@@ -192,10 +205,14 @@
 		<ul id="p"></ul>
 		<ul id="s"></ul>
 		<ul id="m"></ul>
+		<ul id="f"></ul>
+		<ul id="g"></ul>
 
 		<script type="text/javascript">tileGenerate("p");</script>
 		<script type="text/javascript">tileGenerate("s");</script>
 		<script type="text/javascript">tileGenerate("m");</script>
+		<script type="text/javascript">tileGenerate("f");</script>
+		<script type="text/javascript">tileGenerate("g");</script>
 		
 	</div>
 
