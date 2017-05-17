@@ -28,6 +28,7 @@
 		var cur = 0;
 		var sublistId = 0;
 		var numOpen = 0;
+		var tilePlaces = ["hand", "wait", "open", "zwind", "cwind"];
 
 		function alertTooManyTile() {
 			document.getElementById("msg").innerHTML = "too many tiles in hand! Maximum is 13(hand+open) + 1(wait)";
@@ -50,32 +51,27 @@
 		}
 
 		function clearAll() {
-			var hand = document.getElementById("hand"),
-				open = document.getElementById("open"),
-				wait = document.getElementById("wait");
-			while ( hand.firstChild ) {
-				hand.removeChild(hand.firstChild);
-				num--;
+			var plen = tilePlaces.length;
+
+			for (i = 0; i < plen; ++i) {
+				var place = document.getElementById(tilePlaces[i]);
+				while ( place.firstChild ) 
+					place.removeChild(place.firstChild);
 			}
-			while ( open.firstChild ) {
-				open.removeChild(open.firstChild);
-			}
-			while ( wait.firstChild ) {
-				wait.removeChild(wait.firstChild);
-			}
+			num = 0;
+			numOpen = 0;
+			changeCur("hand");
+
 			refreshMsg();
 			return refreshResult();
 		}
 
 		function calc() {
-
-
-			var ret = document.getElementById("result");
-			ret.innerHTML = "0";
+			var ret = document.getElementById("result"), val = 0;
+			ret.innerHTML = val;
 		}
 
 		function add(name) {
-			
 			if ( cur.id == "hand" && num >= 13 )  return alertTooManyTile();
 			refreshMsg();
 
@@ -86,7 +82,7 @@
 				remove(buttonTemp.id, currentPlace);
 			};
 
-			if ( cur.id == "wait" && cur.firstChild != null ) {
+			if ( (cur.id == "wait" || cur.id == "cwind" || cur.id == "zwind") && cur.firstChild != null ) {
 				cur.replaceChild(buttonTemp, cur.firstChild);
 				return;
 			}
@@ -151,8 +147,9 @@
 		}
 
 		function addOpen() {
+			console.log("num is " + num);
 			if ( numOpen >= 4 ) return alertTooManyOpen();
-			if ( num > 11 ) return alertTooManyTileForAnOpen();
+			if ( num >= 10 ) return alertTooManyTileForAnOpen();
 
 			changeCur("open");
 			var list = document.createElement("ul");
@@ -190,7 +187,6 @@
 
 		function changeCur(id) {
 			cur = document.getElementById(id);
-			console.log("cur is " + id);
 		}
 
 	</script>
@@ -221,10 +217,15 @@
 		<p>Wait: <button type="button" onclick="changeCur('wait')">SELECT</button><span id="wait"></span></p>
 		<p>Open: <button type="button" onclick="addOpen()">Add an open</button>
 			<span id="open"></span></p>
-		<p>message: <span id="msg"></span></p>
+
+		<p>Prevailing wind: <button type="button" onclick="changeCur('cwind')">SELECT</button><span id="cwind"></span></p>
+		<p>Player's wind: <button type="button" onclick="changeCur('zwind')">SELECT</button><span id="zwind"></span></p>
+
 		<button type="button" onclick="calc()">Calculate!</button>
-		<p>result: <span id="result"></span></p>
 		<button type="button" onclick="clearAll()">Clear all</button>
+			
+		<p>result: <span id="result"></span></p>
+		<p>message: <span id="msg"></span></p>
 	</div>
 
 	<script type="text/javascript">
