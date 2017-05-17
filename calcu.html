@@ -37,6 +37,10 @@
 			document.getElementById("msg").innerHTML = "too many opens! Maximum is 4";
 		}
 
+		function alertTooManyTileForAnOpen() {
+			document.getElementById("msg").innerHTML = "To add an open, there should be at least 3 tiles free. Now you have " + (13 - num) + " free";
+		}
+
 		function refreshMsg() {
 			document.getElementById("msg").innerHTML = "";
 		}
@@ -71,11 +75,12 @@
 		}
 
 		function add(name) {
-
-			if ( num >= 13 )  return alertTooManyTile();
+			
+			if ( cur.id == "hand" && num >= 13 )  return alertTooManyTile();
+			refreshMsg();
 
 			var buttonTemp = buttonCreate(name);
-			buttonTemp.id = indexId;
+			buttonTemp.id = indexId++;
 			var currentPlace = cur;
 			buttonTemp.onclick = function () {
 				remove(buttonTemp.id, currentPlace);
@@ -88,10 +93,7 @@
 
 			cur.appendChild(buttonTemp);
 
-			if ( cur.id == "hand" ) {
-				indexId++;
-				num++;
-			}
+			if ( cur.id == "hand" ) num++;
 		}
 
 		function remove(id, place) {
@@ -131,11 +133,13 @@
 			var child = document.getElementById(id);
 			open.removeChild(child);
 			numOpen--;
+			num -= 3;
 			return refreshMsg();
 		}
 
 		function addOpen() {
 			if ( numOpen >= 4 ) return alertTooManyOpen();
+			if ( num > 11 ) return alertTooManyTileForAnOpen();
 
 			changeCur("open");
 			var list = document.createElement("ul");
@@ -167,6 +171,7 @@
 
 			sublistId++;
 			numOpen++;
+			num += 3;
 			changeCur(sublTile.id);
 		}
 
