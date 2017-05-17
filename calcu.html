@@ -68,14 +68,11 @@
 		}
 
 		function calc() {
-
-
-			var ret = document.getElementById("result");
-			ret.innerHTML = "0";
+			var ret = document.getElementById("result"), val = 0;
+			ret.innerHTML = val;
 		}
 
 		function add(name) {
-			
 			if ( cur.id == "hand" && num >= 13 )  return alertTooManyTile();
 			refreshMsg();
 
@@ -190,7 +187,6 @@
 
 		function changeCur(id) {
 			cur = document.getElementById(id);
-			console.log("cur is " + id);
 		}
 
 	</script>
@@ -221,10 +217,11 @@
 		<p>Wait: <button type="button" onclick="changeCur('wait')">SELECT</button><span id="wait"></span></p>
 		<p>Open: <button type="button" onclick="addOpen()">Add an open</button>
 			<span id="open"></span></p>
-		<p>message: <span id="msg"></span></p>
 		<button type="button" onclick="calc()">Calculate!</button>
-		<p>result: <span id="result"></span></p>
 		<button type="button" onclick="clearAll()">Clear all</button>
+			
+		<p>result: <span id="result"></span></p>
+		<p>message: <span id="msg"></span></p>
 	</div>
 
 	<script type="text/javascript">
