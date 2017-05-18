@@ -32,15 +32,18 @@
 		var tilePlaces = ["hand", "wait", "open", "zwind", "cwind"];
 
 		function alertTooManyTile() {
-			document.getElementById("msg").innerHTML = "too many tiles in hand! Maximum is 13(hand+open) + 1(wait)";
+			//document.getElementById("msg").innerHTML = "too many tiles in hand! Maximum is 13(hand+open) + 1(wait)";
+			window.alert("too many tiles in hand! Maximum is 13(hand+open) + 1(wait)");
 		}
 
 		function alertTooManyOpen() {
-			document.getElementById("msg").innerHTML = "too many opens! Maximum is 4";
+			// document.getElementById("msg").innerHTML = "too many opens! Maximum is 4";
+			window.alert("too many opens! Maximum is 4");
 		}
 
 		function alertTooManyTileForAnOpen() {
-			document.getElementById("msg").innerHTML = "To add an open, there should be at least 3 tiles free. Now you have " + (13 - num) + " free";
+			//document.getElementById("msg").innerHTML = "To add an open, there should be at least 3 tiles free. Now you have " + (13 - num) + " free";
+			window.alert("To add an open, there should be at least 3 tiles free. Now you have " + (13 - num) + " free");
 		}
 
 		function refreshMsg() {
@@ -52,13 +55,14 @@
 		}
 
 		function clearAll() {
-			var plen = tilePlaces.length;
 
+			var plen = tilePlaces.length;
 			for (i = 0; i < plen; ++i) {
 				var place = document.getElementById(tilePlaces[i]);
 				while ( place.firstChild ) 
 					place.removeChild(place.firstChild);
 			}
+
 			num = 0;
 			numOpen = 0;
 			changeCur("hand");
@@ -112,7 +116,7 @@
 			button.style.background = "none";
 			button.style.border = "none";
 			button.style.outline = "none";
-			
+
 			return button;
 		}
 
@@ -250,7 +254,7 @@
 		
 	<div>	
 		<button type="button" onclick="calc()">Calculate!</button>
-		<button type="button" onclick="clearAll()">Clear all</button>
+		<button type="button" onclick="clearAll()">RESET</button>
 		<p>result: <span id="result"></span></p>
 		<p>message: <span id="msg"></span></p>
 	</div>
