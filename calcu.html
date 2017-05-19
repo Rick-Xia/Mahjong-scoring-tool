@@ -32,18 +32,16 @@
 		var tilePlaces = ["hand", "wait", "open", "zwind", "cwind"];
 
 		function alertTooManyTile() {
-			//document.getElementById("msg").innerHTML = "too many tiles in hand! Maximum is 13(hand+open) + 1(wait)";
 			window.alert("too many tiles in hand! Maximum is 13(hand+open) + 1(wait)");
 		}
 
 		function alertTooManyOpen() {
-			// document.getElementById("msg").innerHTML = "too many opens! Maximum is 4";
 			window.alert("too many opens! Maximum is 4");
 		}
 
 		function alertTooManyTileForAnOpen() {
-			//document.getElementById("msg").innerHTML = "To add an open, there should be at least 3 tiles free. Now you have " + (13 - num) + " free";
-			window.alert("To add an open, there should be at least 3 tiles free. Now you have " + (13 - num) + " free");
+			window.alert("To add an open, there should be at least 3 tiles free. Now you have " + 
+				(13 - num) + " free");
 		}
 
 		function refreshMsg() {
@@ -55,7 +53,6 @@
 		}
 
 		function clearAll() {
-
 			var plen = tilePlaces.length;
 			for (i = 0; i < plen; ++i) {
 				var place = document.getElementById(tilePlaces[i]);
