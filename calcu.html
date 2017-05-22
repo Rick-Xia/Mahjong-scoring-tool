@@ -40,7 +40,7 @@
 		}
 
 		function alertTooManyTileForAnOpen() {
-			window.alert("To add an open, there should be at least 3 tiles free. Now you have " + 
+			window.alert("To add an open, there should be at least 3 tiles free. Now you have " +
 				(13 - num) + " free");
 		}
 
@@ -56,7 +56,7 @@
 			var plen = tilePlaces.length;
 			for (i = 0; i < plen; ++i) {
 				var place = document.getElementById(tilePlaces[i]);
-				while ( place.firstChild ) 
+				while ( place.firstChild )
 					place.removeChild(place.firstChild);
 			}
 
@@ -179,7 +179,7 @@
 				changeCur(sublTile.id);
 			};
 			sublFn.appendChild(buttonSel);
-			
+
 			list.appendChild(sublFn);
 			list.appendChild(sublTile);
 			cur.appendChild(list);
@@ -248,12 +248,12 @@
   			<!--input type="submit" value="Submit"-->
 		</form>
 	</div>
-		
-	<div>	
+
+	<div>
 		<button type="button" onclick="calc()">Calculate!</button>
 		<button type="button" onclick="clearAll()">RESET</button>
 		<p>result: <span id="result"></span></p>
-		<p>message: <span id="msg"></span></p>
+		<p>message: Im here<span id="msg"></span></p>
 	</div>
 
 </body>
