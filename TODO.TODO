@@ -15,3 +15,8 @@
       ☐ fn
     ☐ self-pick
       ☐ fn
+
+  Img & button parts:
+    ☐ Using .Data attri to store value
+    ☐ onclick Calcu button to display calues
+    ☐ implement actual logic
