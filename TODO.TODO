@@ -3,20 +3,26 @@
   ☐ Put wind and dragon into the same line
 
   Change Radio buttons and check's to group buttons:
-    ☐ non-readyHand/readyHand/doubleReady
+    ✔ non-readyHand/readyHand/doubleReady @done (17-06-02 19:05)
       ☐ fn
-    ☐ oneShot
+    ✔ oneShot @done (17-06-02 19:05)
       ☐ fn
-    ☐ lastTile&lastDiscard
+    ✔ lastTile&lastDiscard @done (17-06-02 19:05)
       ☐ fn
-    ☐ deadWallDraw
+    ✔ deadWallDraw @done (17-06-02 19:05)
       ☐ fn
-    ☐ robbingQuad
+    ✔ robbingQuad @done (17-06-02 19:05)
       ☐ fn
-    ☐ self-pick
+    ✔ self-pick @done (17-06-02 19:05)
       ☐ fn
 
   Img & button parts:
     ☐ Using .Data attri to store value
     ☐ onclick Calcu button to display calues
     ☐ implement actual logic
+
+  Overall art style:
+    ☐ Font
+    ☐ img size
+    ☐ HandDrawing style for tiles?
+    ☐ Or adjust overall style to fit tile style

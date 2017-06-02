@@ -53,6 +53,10 @@
                 height: 53px;
             }
 
+            .margin-top {
+                margin-top: 45px;
+            }
+
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -281,18 +285,54 @@
                 <div class="col-sm-8">
                     <!-- DORA, Cwind, Zwind -->
                     <div class="row">
-                        <div class="col-sm-4" id="dora">
-                            <p>DORA: </p>
+                        <div class="col-sm-2" id="dora">
+                            <span>DORA: </span>
+                            <span> </span>
                         </div>
-                        <div class="col-sm-4" id="cwind">
-                            <p>Prevailing wind:
-                                <button type="button" onclick="changeCur('cwind')">SELECT</button>
-                                <span id="cwind"></span></p>
+                        <div class="col-sm-5" id="cwind">
+                            <span>Prevailing wind: </span>
+                            <img src="img/1f.png" alt="Tou">
+                            <img src="img/2f.png" alt="Nan">
+                            <img src="img/3f.png" alt="Sai">
+                            <img src="img/4f.png" alt="Pe">
                         </div>
-                        <div class="col-sm-4" id="zwind">
-                            <p>Player's wind:
-                                <button type="button" onclick="changeCur('zwind')">SELECT</button>
-                                <span id="zwind"></span></p>
+                        <div class="col-sm-5" id="zwind">
+                            <span>Player's wind: </span>
+                            <img src="img/1f.png" alt="Tou">
+                            <img src="img/2f.png" alt="Nan">
+                            <img src="img/3f.png" alt="Sai">
+                            <img src="img/4f.png" alt="Pe">
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-sm-5" id="liichi">
+                            <div class="row">
+                                <div class="btn-group col-sm-12">
+                                    <button type="button" class="col-sm-6 btn btn-primary">Ready Hand</button>
+                                    <button type="button" class="col-sm-6 btn btn-primary">Double Ready</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button type="button" class="col-sm-12 btn btn-primary">One-shot</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 btn-group-vertical" id="Ron">
+                            <button type="button" class="btn btn-primary">Self-pick</button>
+                            <button type="button" class="btn btn-primary">Ron!!</button>
+                        </div>
+                        <div class="col-sm-5" id="addon">
+                            <div class="row">
+                                <div class="btn-group col-sm-12">
+                                    <button type="button" class="col-sm-6 btn btn-primary">Last Draw</button>
+                                    <button type="button" class="col-sm-6 btn btn-primary">Last Tile</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="btn-group col-sm-12">
+                                    <button type="button" class="col-sm-6 btn btn-primary">Robbing Quad</button>
+                                    <button type="button" class="col-sm-6 btn btn-primary">Dead Wall Draw</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
