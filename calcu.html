@@ -1,237 +1,351 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>calculation page</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-	body {
-		# text-align: center;
-		background-color: #F7F9F9;
-	}
-	ul {
-    	list-style-type: none;
-    	overflow: hidden;
-	}
-	li {
-    	float: left;
-	}
-	button img {
-		width: 44px;
-		height: 53px;
-	}
-	</style>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script type="text/javascript">
-		var indexId = 0; // id for tiles
-		var num = 0; // count of tiles in hand
-		var cur = 0;
-		var sublistId = 0;
-		var numOpen = 0;
-		var tilePlaces = ["hand", "wait", "open", "zwind", "cwind"];
+    <head>
+        <title>calculation page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .bg-1 {
+                background-color: #5bc0de;
+                /* Green */
+                color: #ffffff;
+            }
 
-		function alertTooManyTile() {
-			window.alert("too many tiles in hand! Maximum is 13(hand+open) + 1(wait)");
-		}
+            .bg-2 {
+                background-color: #474e5d;
+                /* Dark Blue */
+                color: #ffffff;
+            }
 
-		function alertTooManyOpen() {
-			window.alert("too many opens! Maximum is 4");
-		}
+            .bg-3 {
+                background-color: #ffffff;
+                /* White */
+                color: #555555;
+            }
 
-		function alertTooManyTileForAnOpen() {
-			window.alert("To add an open, there should be at least 3 tiles free. Now you have " + 
-				(13 - num) + " free");
-		}
+            .bg-4 {
+                background-color: #2f2f2f;
+                color: #ffffff;
+            }
 
-		function refreshMsg() {
-			document.getElementById("msg").innerHTML = "";
-		}
+            .container-fluid {
+                padding-top: 70px;
+                padding-bottom: 70px;
+            }
 
-		function refreshResult() {
-			document.getElementById("result").innerHTML = "";
-		}
+            body {
+                # text-align: center;
+                background-color: #F7F9F9;
+            }
 
-		function clearAll() {
-			var plen = tilePlaces.length;
-			for (i = 0; i < plen; ++i) {
-				var place = document.getElementById(tilePlaces[i]);
-				while ( place.firstChild ) 
-					place.removeChild(place.firstChild);
-			}
+            ul {
+                list-style-type: none;
+                overflow: hidden;
+            }
 
-			num = 0;
-			numOpen = 0;
-			changeCur("hand");
+            li {
+                float: left;
+            }
 
-			refreshMsg();
-			return refreshResult();
-		}
+            button img {
+                width: 44px;
+                height: 53px;
+            }
 
-		function calc() {
-			var ret = document.getElementById("result"), val = 0;
-			ret.innerHTML = val;
-		}
+            .margin-top {
+                margin-top: 45px;
+            }
 
-		function add(name) {
-			if ( cur.id == "hand" && num >= 13 )  return alertTooManyTile();
-			refreshMsg();
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script type="text/javascript">
+            var indexId = 0; // id for tiles
+            var num = 0; // count of tiles in hand
+            var cur = 0;
+            var sublistId = 0;
+            var numOpen = 0;
+            var tilePlaces = ["hand", "wait", "open", "zwind", "cwind"];
 
-			var buttonTemp = buttonCreate(name);
-			buttonTemp.id = indexId++;
-			var currentPlace = cur;
-			buttonTemp.onclick = function () {
-				remove(buttonTemp.id, currentPlace);
-			};
+            function alertTooManyTile() {
+                window.alert("too many tiles in hand! Maximum is 13(hand+open) + 1(wait)");
+            }
 
-			if ( (cur.id == "wait" || cur.id == "cwind" || cur.id == "zwind") && cur.firstChild != null ) {
-				cur.replaceChild(buttonTemp, cur.firstChild);
-				return;
-			}
+            function alertTooManyOpen() {
+                window.alert("too many opens! Maximum is 4");
+            }
 
-			cur.appendChild(buttonTemp);
+            function alertTooManyTileForAnOpen() {
+                window.alert("To add an open, there should be at least 3 tiles free. Now you have " +
+                    (13 - num) + " free");
+            }
 
-			if ( cur.id == "hand" ) num++;
-		}
+            function refreshMsg() {
+                document.getElementById("msg").innerHTML = "";
+            }
 
-		function remove(id, place) {
-			var element = document.getElementById(id);
-			place.removeChild(element);
-			num--;
-			return refreshMsg();
-		}
+            function refreshResult() {
+                document.getElementById("result").innerHTML = "";
+            }
 
-		function buttonCreate(name) {
-			var button = document.createElement("button");
-			button.type = "button";
-			button.name = name;
-			button.onclick = function () {
-				add(button.name);
-			};
+            function clearAll() {
+                var plen = tilePlaces.length;
+                for (i = 0; i < plen; ++i) {
+                    var place = document.getElementById(tilePlaces[i]);
+                    while (place.firstChild)
+                        place.removeChild(place.firstChild);
+                }
 
-			button.innerHTML = '<img src="img/' + button.name + '.png" />';
-			button.style.background = "none";
-			button.style.border = "none";
-			button.style.outline = "none";
+                num = 0;
+                numOpen = 0;
+                changeCur("hand");
 
-			return button;
-		}
+                refreshMsg();
+                return refreshResult();
+            }
 
-		function tileGenerate(type) {
-			var list = document.getElementById(type), count = 1, max = 0;
-			switch (type) {
-				case "m":
-				case "s":
-				case "p":
-					max = 9;
-					break;
-				case "f":
-					max = 4;
-					break;
-				case "g":
-					max = 3;
-					break;
-			}
+            function calc() {
+                var ret = document.getElementById("result"),
+                    val = 0;
+                ret.innerHTML = val;
+            }
 
-			while ( count <= max ) {
-				var button = buttonCreate(count + type);
-				var sublist = document.createElement("li");
-				sublist.appendChild(button);
+            function add(name) {
+                if (cur.id == "hand" && num >= 13) return alertTooManyTile();
+                refreshMsg();
 
-				list.appendChild(sublist);
-				count++;
-			}
-		}
+                var buttonTemp = buttonCreate(name);
+                buttonTemp.id = indexId++;
+                var currentPlace = cur;
+                buttonTemp.onclick = function() {
+                    remove(buttonTemp.id, currentPlace);
+                };
 
-		function deleteOpen(id) {
-			var open = document.getElementById("open");
-			var child = document.getElementById(id);
-			open.removeChild(child);
-			numOpen--;
-			num -= 3;
-			return refreshMsg();
-		}
+                if ((cur.id == "wait" || cur.id == "cwind" || cur.id == "zwind") && cur.firstChild != null) {
+                    cur.replaceChild(buttonTemp, cur.firstChild);
+                    return;
+                }
 
-		function addOpen() {
-			if ( numOpen >= 4 ) return alertTooManyOpen();
-			if ( num >= 10 ) return alertTooManyTileForAnOpen();
+                cur.appendChild(buttonTemp);
 
-			changeCur("open");
-			var list = document.createElement("ul");
-			list.id = "openlist" + sublistId;
+                if (cur.id == "hand") num++;
+            }
 
-			var sublFn = document.createElement("li");
-			var sublTile = document.createElement("li");
-			sublTile.id = "sublist" + sublistId;
+            function remove(id, place) {
+                var element = document.getElementById(id);
+                place.removeChild(element);
+                num--;
+                return refreshMsg();
+            }
 
-			var buttonDel= document.createElement("button");
-			buttonDel.type = "button";
-			buttonDel.innerHTML = "Delete";
-			buttonDel.onclick = function () {
-				deleteOpen(list.id);
-			};
-			sublFn.appendChild(buttonDel);
+            function buttonCreate(name) {
+                var button = document.createElement("button");
+                button.type = "button";
+                button.name = name;
+                button.onclick = function() {
+                    add(button.name);
+                };
 
-			var buttonSel = document.createElement("button");
-			buttonSel.type = "button";
-			buttonSel.innerHTML = "Select";
-			buttonSel.onclick = function () {
-				changeCur(sublTile.id);
-			};
-			sublFn.appendChild(buttonSel);
-			
-			list.appendChild(sublFn);
-			list.appendChild(sublTile);
-			cur.appendChild(list);
+                button.innerHTML = '<img src="img/' + button.name + '.png" />';
+                button.style.background = "none";
+                button.style.border = "none";
+                button.style.outline = "none";
 
-			sublistId++;
-			numOpen++;
-			num += 3;
-			changeCur(sublTile.id);
-		}
+                return button;
+            }
 
-		function changeCur(id) {
-			cur = document.getElementById(id);
-		}
+            function tileGenerate(type) {
+                var list = document.getElementById(type),
+                    count = 1,
+                    max = 0;
+                switch (type) {
+                    case "m":
+                    case "s":
+                    case "p":
+                        max = 9;
+                        break;
+                    case "f":
+                        max = 4;
+                        break;
+                    case "g":
+                        max = 3;
+                        break;
+                }
 
-		$( document ).ready(function() {
-			cur = document.getElementById("hand");
-			tileGenerate("p");
-			tileGenerate("s");
-			tileGenerate("m");
-			tileGenerate("f");
-			tileGenerate("g");
-    		console.log( "ready!" );
-		});
-	</script>
-</head>
+                while (count <= max) {
+                    var button = buttonCreate(count + type);
+                    var sublist = document.createElement("li");
+                    sublist.appendChild(button);
 
-<body>
+                    list.appendChild(sublist);
+                    count++;
+                }
+            }
 
-	<a href="index.html">back to main page</a>
-	<br />
+            function deleteOpen(id) {
+                var open = document.getElementById("open");
+                var child = document.getElementById(id);
+                open.removeChild(child);
+                numOpen--;
+                num -= 3;
+                return refreshMsg();
+            }
 
-	<div style="margin:20px">
-		<ul id="p"></ul>
-		<ul id="s"></ul>
-		<ul id="m"></ul>
-		<ul id="f"></ul>
-		<ul id="g"></ul>
-	</div>
+            function addOpen() {
+                if (numOpen >= 4) return alertTooManyOpen();
+                if (num >= 10) return alertTooManyTileForAnOpen();
 
-	<div>
-		<p>Hand: <button type="button" onclick="changeCur('hand')">SELECT</button><span id="hand"></span></p>
-		<p>Wait: <button type="button" onclick="changeCur('wait')">SELECT</button><span id="wait"></span></p>
-		<p>Open: <button type="button" onclick="addOpen()">Add an open</button>
-			<span id="open"></span></p>
+                changeCur("open");
+                var list = document.createElement("ul");
+                list.id = "openlist" + sublistId;
 
+                var sublFn = document.createElement("li");
+                var sublTile = document.createElement("li");
+                sublTile.id = "sublist" + sublistId;
+
+                var buttonDel = document.createElement("button");
+                buttonDel.type = "button";
+                buttonDel.innerHTML = "Delete";
+                buttonDel.onclick = function() {
+                    deleteOpen(list.id);
+                };
+                sublFn.appendChild(buttonDel);
+
+                var buttonSel = document.createElement("button");
+                buttonSel.type = "button";
+                buttonSel.innerHTML = "Select";
+                buttonSel.onclick = function() {
+                    changeCur(sublTile.id);
+                };
+                sublFn.appendChild(buttonSel);
+
+                list.appendChild(sublFn);
+                list.appendChild(sublTile);
+                cur.appendChild(list);
+
+                sublistId++;
+                numOpen++;
+                num += 3;
+                changeCur(sublTile.id);
+            }
+
+            function changeCur(id) {
+                cur = document.getElementById(id);
+            }
+
+            $(document).ready(function() {
+                cur = document.getElementById("hand");
+                tileGenerate("p");
+                tileGenerate("s");
+                tileGenerate("m");
+                tileGenerate("f");
+                tileGenerate("g");
+                console.log("ready!");
+            });
+
+        </script>
+    </head>
+
+    <body>
+        <div id="tile_area" class="container-fluid text-center">
+            <a href="index.html">back to main page</a>
+            <div class="text-center" style="margin:20px">
+                <ul id="p"></ul>
+                <ul id="s"></ul>
+                <ul id="m"></ul>
+                <ul id="f"></ul>
+                <ul id="g"></ul>
+            </div>
+            <div>
+                <p>Hand:
+                    <button type="button" onclick="changeCur('hand')">SELECT</button><span id="hand"></span></p>
+                <p>Wait:
+                    <button type="button" onclick="changeCur('wait')">SELECT</button><span id="wait"></span></p>
+                <p>Open:
+                    <button type="button" onclick="addOpen()">Add an open</button>
+                    <span id="open"></span></p>
+                <!--
 		<p>Prevailing wind: <button type="button" onclick="changeCur('cwind')">SELECT</button>
 			<span id="cwind"></span></p>
 		<p>Player's wind: <button type="button" onclick="changeCur('zwind')">SELECT</button>
 			<span id="zwind"></span></p>
-	</div>
+		-->
+            </div>
+        </div>
+        <div>
+            <button type="button" onclick="calc()">Calculate!</button>
+            <button type="button" onclick="clearAll()">RESET</button>
+            <p>result: <span id="result"></span></p>
+            <p>message: <span id="msg"></span></p>
+        </div>
+        <!-- Start of the functional panel(area) -->
+        <div id="function_area" class="container-fluid bg-1">
+            <div class="row">
+                <div class="col-sm-8">
+                    <!-- DORA, Cwind, Zwind -->
+                    <div class="row">
+                        <div class="col-sm-2" id="dora">
+                            <span>DORA: </span>
+                            <span> </span>
+                        </div>
+                        <div class="col-sm-5" id="cwind">
+                            <span>Prevailing wind: </span>
+                            <img src="img/1f.png" alt="Tou">
+                            <img src="img/2f.png" alt="Nan">
+                            <img src="img/3f.png" alt="Sai">
+                            <img src="img/4f.png" alt="Pe">
+                        </div>
+                        <div class="col-sm-5" id="zwind">
+                            <span>Player's wind: </span>
+                            <img src="img/1f.png" alt="Tou">
+                            <img src="img/2f.png" alt="Nan">
+                            <img src="img/3f.png" alt="Sai">
+                            <img src="img/4f.png" alt="Pe">
+                        </div>
+                    </div>
+                    <!-- functional part -->
+                    <div class="row margin-top">
+                        <div class="col-sm-5" id="liichi">
+                            <div class="row">
+                                <div class="btn-group col-sm-12">
+                                    <button type="button" class="col-sm-6 btn btn-primary">Ready Hand</button>
+                                    <button type="button" class="col-sm-6 btn btn-primary">Double Ready</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button type="button" class="col-sm-12 btn btn-primary">One-shot</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 btn-group-vertical" id="Ron">
+                            <button type="button" class="btn btn-primary">Self-pick</button>
+                            <button type="button" class="btn btn-primary">Ron!!</button>
+                        </div>
+                        <div class="col-sm-5" id="addon">
+                            <div class="row">
+                                <div class="btn-group col-sm-12">
+                                    <button type="button" class="col-sm-6 btn btn-primary">Last Draw</button>
+                                    <button type="button" class="col-sm-6 btn btn-primary">Last Tile</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="btn-group col-sm-12">
+                                    <button type="button" class="col-sm-6 btn btn-primary">Robbing Quad</button>
+                                    <button type="button" class="col-sm-6 btn btn-primary">Dead Wall Draw</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- unused for layout -->
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+        <div id="result_area" class="container-fluid text-center bg-4">
 
-	<div style="margin:20px">
+        </div>
+        <!--div style="margin:20px">
 		<form action="">
   			<input type="radio" name="readyHand" value="0" checked="checked">non-Ready Hand
   			<input type="radio" name="readyHand" value="1"> Ready Hand
@@ -241,20 +355,14 @@
   			<input type="radio" name="last" value="2">Last Tile
   			<input type="radio" name="last" value="0" checked="checked">none<br />
 
-		<!--form action="action_page.php" method="get"-->
+		<!--form action="action_page.php" method="get"->
   			<input type="checkbox" name="self" value="sp">Self-Pick
   			<input type="checkbox" name="deaddraw" value="dd">Dead Wall Draw
   			<input type="checkbox" name="oneshot" value="os">One-Shot<br />
-  			<!--input type="submit" value="Submit"-->
+  			<!--input type="submit" value="Submit"->
 		</form>
-	</div>
-		
-	<div>	
-		<button type="button" onclick="calc()">Calculate!</button>
-		<button type="button" onclick="clearAll()">RESET</button>
-		<p>result: <span id="result"></span></p>
-		<p>message: <span id="msg"></span></p>
-	</div>
+	</div-->
+    </body>
 
-</body>
 </html>
+

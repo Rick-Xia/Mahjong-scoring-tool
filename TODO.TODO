@@ -1,0 +1,30 @@
+
+  ☐ Change Dora to numbers
+  ☐ Put wind and dragon into the same line >{ refer to section 2
+  ☐ Calculate without button?
+
+  1. Change Radio buttons and check's to group buttons:
+    ✔ non-readyHand/readyHand/doubleReady @done (17-06-02 19:05)
+      ☐ fn
+    ✔ oneShot @done (17-06-02 19:05)
+      ☐ fn
+    ✔ lastTile&lastDiscard @done (17-06-02 19:05)
+      ☐ fn
+    ✔ deadWallDraw @done (17-06-02 19:05)
+      ☐ fn
+    ✔ robbingQuad @done (17-06-02 19:05)
+      ☐ fn
+    ✔ self-pick @done (17-06-02 19:05)
+      ☐ fn
+
+  2. Img & button parts:
+    ☐ Changing js generating tiles into html generating tiles
+    ☐ Using .Data attri to store value
+    ☐ onclick Calcu button to display calues
+    ☐ implement actual logic
+
+  3. Overall art style:
+    ☐ Font
+    ☐ img size
+    ☐ HandDrawing style for tiles?
+    ☐ Or adjust overall style to fit tile style
