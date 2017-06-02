@@ -1,14 +1,16 @@
 
+  ☐ Change Dora to numbers
+
   Change Radio buttons and check's to group buttons:
     ☐ non-readyHand/readyHand/doubleReady
+      ☐ fn
+    ☐ oneShot
       ☐ fn
     ☐ lastTile&lastDiscard
       ☐ fn
     ☐ deadWallDraw
       ☐ fn
     ☐ robbingQuad
-      ☐ fn
-    ☐ oneShot
       ☐ fn
     ☐ self-pick
       ☐ fn

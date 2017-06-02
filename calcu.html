@@ -23,6 +23,9 @@
 	</style>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 	<script type="text/javascript">
 		var indexId = 0; // id for tiles
 		var num = 0; // count of tiles in hand
@@ -231,7 +234,11 @@
 			<span id="zwind"></span></p>
 	</div>
 
-	<div style="margin:20px">
+	<div class="container-fluid function-area">
+
+	</div>
+
+	<!--div style="margin:20px">
 		<form action="">
   			<input type="radio" name="readyHand" value="0" checked="checked">non-Ready Hand
   			<input type="radio" name="readyHand" value="1"> Ready Hand
@@ -241,11 +248,11 @@
   			<input type="radio" name="last" value="2">Last Tile
   			<input type="radio" name="last" value="0" checked="checked">none<br />
 
-		<!--form action="action_page.php" method="get"-->
+		<!--form action="action_page.php" method="get"->
   			<input type="checkbox" name="self" value="sp">Self-Pick
   			<input type="checkbox" name="deaddraw" value="dd">Dead Wall Draw
   			<input type="checkbox" name="oneshot" value="os">One-Shot<br />
-  			<!--input type="submit" value="Submit"-->
+  			<!--input type="submit" value="Submit"->
 		</form>
 	</div>
 
@@ -254,7 +261,7 @@
 		<button type="button" onclick="clearAll()">RESET</button>
 		<p>result: <span id="result"></span></p>
 		<p>message: Im here<span id="msg"></span></p>
-	</div>
+	</div-->
 
 </body>
 </html>
