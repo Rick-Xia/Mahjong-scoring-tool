@@ -35,7 +35,6 @@
             }
 
             body {
-                # text-align: center;
                 background-color: #F7F9F9;
             }
 
@@ -55,6 +54,12 @@
 
             .margin-top {
                 margin-top: 45px;
+            }
+
+            button.btn-tile {
+                background: none;
+                border: none;
+                outline: none;
             }
 
         </style>
@@ -235,6 +240,7 @@
                 cur = document.getElementById(id);
             }
 
+            /*
             $(document).ready(function() {
                 cur = document.getElementById("hand");
                 tileGenerate("p");
@@ -244,6 +250,7 @@
                 tileGenerate("g");
                 console.log("ready!");
             });
+            */
 
         </script>
     </head>
@@ -251,117 +258,220 @@
     <body>
         <div id="tile_area" class="container-fluid text-center">
             <a href="index.html">back to main page</a>
-            <div class="text-center" style="margin:20px">
-                <ul id="p"></ul>
-                <ul id="s"></ul>
-                <ul id="m"></ul>
-                <ul id="f"></ul>
-                <ul id="g"></ul>
+            <div class="container-fluid">
+                <!-- Pin -->
+                <div class="row">
+                    <button class="btn-tile" type="button">
+                        <img src="img/1p.png" alt="1p">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/2p.png" alt="2p">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/3p.png" alt="3p">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/4p.png" alt="4p">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/5p.png" alt="5p">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/6p.png" alt="6p">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/7p.png" alt="7p">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/8p.png" alt="8p">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/9p.png" alt="9p">
+                    </button>
+                </div>
+                <!-- So -->
+                <div class="row">
+                    <button class="btn-tile" type="button">
+                        <img src="img/1s.png" alt="1s">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/2s.png" alt="2s">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/3s.png" alt="3s">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/4s.png" alt="4s">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/5s.png" alt="5s">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/6s.png" alt="6s">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/7s.png" alt="7s">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/8s.png" alt="8s">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/9s.png" alt="9s">
+                    </button>
+                </div>
+                <!-- Man -->
+                <div class="row">
+                    <button class="btn-tile" type="button">
+                        <img src="img/1m.png" alt="1m">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/2m.png" alt="2m">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/3m.png" alt="3m">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/4m.png" alt="4m">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/5m.png" alt="5m">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/6m.png" alt="6m">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/7m.png" alt="7m">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/8m.png" alt="8m">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/9m.png" alt="9m">
+                    </button>
+                </div>
+                <!-- Special -->
+                <div class="row">
+                    <button class="btn-tile" type="button">
+                        <img src="img/1f.png" alt="1f">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/2f.png" alt="2f">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/3f.png" alt="3f">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/4f.png" alt="4f">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/1g.png" alt="1g">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/2g.png" alt="2g">
+                    </button>
+                    <button class="btn-tile" type="button">
+                        <img src="img/3g.png" alt="3g">
+                    </button>
+                </div>
             </div>
-            <div>
+            <hr />
+            <div class="row">
+                div.col-sm-
                 <p>Hand:
                     <button type="button" onclick="changeCur('hand')">SELECT</button><span id="hand"></span></p>
                 <p>Wait:
                     <button type="button" onclick="changeCur('wait')">SELECT</button><span id="wait"></span></p>
+            </div>
+            <div>
                 <p>Open:
                     <button type="button" onclick="addOpen()">Add an open</button>
                     <span id="open"></span></p>
-                <!--
-		<p>Prevailing wind: <button type="button" onclick="changeCur('cwind')">SELECT</button>
-			<span id="cwind"></span></p>
-		<p>Player's wind: <button type="button" onclick="changeCur('zwind')">SELECT</button>
-			<span id="zwind"></span></p>
-		-->
+                <button type="button" onclick="calc()">Calculate!</button>
+                <button type="button" onclick="clearAll()">RESET</button>
             </div>
-        </div>
-        <div>
-            <button type="button" onclick="calc()">Calculate!</button>
-            <button type="button" onclick="clearAll()">RESET</button>
-            <p>result: <span id="result"></span></p>
-            <p>message: <span id="msg"></span></p>
         </div>
         <!-- Start of the functional panel(area) -->
         <div id="function_area" class="container-fluid bg-1">
+            <!-- DORA, Cwind, Zwind -->
             <div class="row">
-                <div class="col-sm-8">
-                    <!-- DORA, Cwind, Zwind -->
+                <div class="col-sm-2" id="dora">
+                    <span>DORA: </span>
+                    <span> </span>
+                </div>
+                <div class="col-sm-5" id="cwind">
+                    <span>Prevailing wind: </span>
+                    <img src="img/1f.png" alt="Tou">
+                    <img src="img/2f.png" alt="Nan">
+                    <img src="img/3f.png" alt="Sai">
+                    <img src="img/4f.png" alt="Pe">
+                </div>
+                <div class="col-sm-5" id="zwind">
+                    <span>Player's wind: </span>
+                    <img src="img/1f.png" alt="Tou">
+                    <img src="img/2f.png" alt="Nan">
+                    <img src="img/3f.png" alt="Sai">
+                    <img src="img/4f.png" alt="Pe">
+                </div>
+            </div>
+            <!-- functional part -->
+            <div class="row margin-top">
+                <div class="col-sm-5" id="liichi">
                     <div class="row">
-                        <div class="col-sm-2" id="dora">
-                            <span>DORA: </span>
-                            <span> </span>
-                        </div>
-                        <div class="col-sm-5" id="cwind">
-                            <span>Prevailing wind: </span>
-                            <img src="img/1f.png" alt="Tou">
-                            <img src="img/2f.png" alt="Nan">
-                            <img src="img/3f.png" alt="Sai">
-                            <img src="img/4f.png" alt="Pe">
-                        </div>
-                        <div class="col-sm-5" id="zwind">
-                            <span>Player's wind: </span>
-                            <img src="img/1f.png" alt="Tou">
-                            <img src="img/2f.png" alt="Nan">
-                            <img src="img/3f.png" alt="Sai">
-                            <img src="img/4f.png" alt="Pe">
+                        <div class="btn-group btn-group-justified">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary">Ready Hand</button>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary">Double Ready</button>
+                            </div>
                         </div>
                     </div>
-                    <!-- functional part -->
-                    <div class="row margin-top">
-                        <div class="col-sm-5" id="liichi">
-                            <div class="row">
-                                <div class="btn-group col-sm-12">
-                                    <button type="button" class="col-sm-6 btn btn-primary">Ready Hand</button>
-                                    <button type="button" class="col-sm-6 btn btn-primary">Double Ready</button>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <button type="button" class="col-sm-12 btn btn-primary">One-shot</button>
-                            </div>
+                    <div class="row">
+                        <button type="button" class="col-sm-12 btn btn-primary">One-shot</button>
+                    </div>
+                </div>
+                <div class="col-sm-2 btn-group-vertical" id="Ron">
+                    <button type="button" class="btn btn-primary">Self-pick</button>
+                    <button type="button" class="btn btn-primary">Ron!!</button>
+                </div>
+                <div class="col-sm-5" id="addon">
+                    <div class="row">
+                        <div class="btn-group col-sm-12">
+                            <button type="button" class="col-sm-6 btn btn-primary">Last Draw</button>
+                            <button type="button" class="col-sm-6 btn btn-primary">Last Tile</button>
                         </div>
-                        <div class="col-sm-2 btn-group-vertical" id="Ron">
-                            <button type="button" class="btn btn-primary">Self-pick</button>
-                            <button type="button" class="btn btn-primary">Ron!!</button>
-                        </div>
-                        <div class="col-sm-5" id="addon">
-                            <div class="row">
-                                <div class="btn-group col-sm-12">
-                                    <button type="button" class="col-sm-6 btn btn-primary">Last Draw</button>
-                                    <button type="button" class="col-sm-6 btn btn-primary">Last Tile</button>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="btn-group col-sm-12">
-                                    <button type="button" class="col-sm-6 btn btn-primary">Robbing Quad</button>
-                                    <button type="button" class="col-sm-6 btn btn-primary">Dead Wall Draw</button>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="btn-group col-sm-12">
+                            <button type="button" class="col-sm-6 btn btn-primary">Robbing Quad</button>
+                            <button type="button" class="col-sm-6 btn btn-primary">Dead Wall Draw</button>
                         </div>
                     </div>
                 </div>
-                <!-- unused for layout -->
-                <div class="col-sm-4"></div>
             </div>
         </div>
+        <!-- Start of the Result panel(area) -->
         <div id="result_area" class="container-fluid text-center bg-4">
-
+            <p>result: <span id="result"></span></p>
+            <p>message: <span id="msg"></span></p>
         </div>
         <!--div style="margin:20px">
-		<form action="">
-  			<input type="radio" name="readyHand" value="0" checked="checked">non-Ready Hand
-  			<input type="radio" name="readyHand" value="1"> Ready Hand
-  			<input type="radio" name="readyHand" value="2"> Double Ready<br />
+        <form action="">
+            <input type="radio" name="readyHand" value="0" checked="checked">non-Ready Hand
+            <input type="radio" name="readyHand" value="1"> Ready Hand
+            <input type="radio" name="readyHand" value="2"> Double Ready<br />
 
-  			<input type="radio" name="last" value="1">Last Discard
-  			<input type="radio" name="last" value="2">Last Tile
-  			<input type="radio" name="last" value="0" checked="checked">none<br />
+            <input type="radio" name="last" value="1">Last Discard
+            <input type="radio" name="last" value="2">Last Tile
+            <input type="radio" name="last" value="0" checked="checked">none<br />
 
-		<!--form action="action_page.php" method="get"->
-  			<input type="checkbox" name="self" value="sp">Self-Pick
-  			<input type="checkbox" name="deaddraw" value="dd">Dead Wall Draw
-  			<input type="checkbox" name="oneshot" value="os">One-Shot<br />
-  			<!--input type="submit" value="Submit"->
-		</form>
-	</div-->
+        <!--form action="action_page.php" method="get"->
+            <input type="checkbox" name="self" value="sp">Self-Pick
+            <input type="checkbox" name="deaddraw" value="dd">Dead Wall Draw
+            <input type="checkbox" name="oneshot" value="os">One-Shot<br />
+            <!--input type="submit" value="Submit"->
+        </form>
+    </div-->
     </body>
 
 </html>

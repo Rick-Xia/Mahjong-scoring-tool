@@ -1,7 +1,9 @@
 
+  0. General changes:
   ☐ Change Dora to numbers
-  ☐ Put wind and dragon into the same line >{ refer to section 2
-  ☐ Calculate without button?
+  ✔ Put wind and dragon into the same line >{ refer to section 2 @done (17-06-05 16:36)
+  ☐ Delete the "Calculate" button?
+  ☐ Change back link to navbar
 
   1. Change Radio buttons and check's to group buttons:
     ✔ non-readyHand/readyHand/doubleReady @done (17-06-02 19:05)
@@ -18,7 +20,8 @@
       ☐ fn
 
   2. Img & button parts:
-    ☐ Changing js generating tiles into html generating tiles
+    ✔ Changing js generating tiles into html generating tiles @done (17-06-05 16:15)
+    ☐ Modify tile logic
     ☐ Using .Data attri to store value
     ☐ onclick Calcu button to display calues
     ☐ implement actual logic
