@@ -1,0 +1,19 @@
+{
+  "name": "mahjong-scoring-tool",
+  "version": "1.0.0",
+  "description": "A tool that helps you calculate Mahjong score",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rick-Xia/Mahjong-scoring-tool.git"
+  },
+  "author": "Xingyu (Richard)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rick-Xia/Mahjong-scoring-tool/issues"
+  },
+  "homepage": "https://github.com/Rick-Xia/Mahjong-scoring-tool#readme"
+}
