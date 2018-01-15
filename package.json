@@ -4,7 +4,9 @@
   "description": "A tool that helps you calculate Mahjong score",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run lite", 
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite": "lite-server"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Rick-Xia/Mahjong-scoring-tool/issues"
   },
-  "homepage": "https://github.com/Rick-Xia/Mahjong-scoring-tool#readme"
+  "homepage": "https://github.com/Rick-Xia/Mahjong-scoring-tool#readme",
+  "devDependencies": {
+    "lite-server": "^2.3.0"
+  }
 }
