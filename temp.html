@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 
     <!--link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/bootstrap-social.css">
-    <link rel="stylesheet" href="css/styles.css"-->
+    <link rel="stylesheet" href="css/bootstrap-social.css"-->
+    <link rel="stylesheet" href="css/styles.css">
     <!-- endbuild -->
 
     <title>Mahjoint Calculation Page</title>
@@ -41,26 +41,93 @@
         </div>
     </nav--> 
 
-    <div class="container">
-        <div class="row all-tile">
-            <div class="col-sm col-md">
-                <div class="d-flex justify-content-center">
-                    <h1>ALL TILES</h1> <br>
-                    <p>debating about Dynamic loading or Static loading</p>
+    <div class="container all-tile">
+        <div class="row row-content d-flex justify-content-center">
+            <img class="tile tile_selector tile_color_normal" src="./img/1m.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/2m.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/3m.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/4m.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/5m.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/6m.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/7m.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/8m.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/9m.png" style="opacity: 1; cursor: pointer;">
+        </div>
+        <div class="row row-content d-flex justify-content-center">
+            <img class="tile tile_selector tile_color_normal" src="./img/1s.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/2s.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/3s.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/4s.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/5s.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/6s.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/7s.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/8s.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/9s.png" style="opacity: 1; cursor: pointer;">
+        </div>
+        <div class="row row-content d-flex justify-content-center">
+            <img class="tile tile_selector tile_color_normal" src="./img/1p.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/2p.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/3p.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/4p.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/5p.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/6p.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/7p.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/8p.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/9p.png" style="opacity: 1; cursor: pointer;">
+        </div>
+        <div class="row row-content d-flex justify-content-center">
+            <img class="tile tile_selector tile_color_normal" src="./img/1f.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/2f.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/3f.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/4f.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/1g.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/2g.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/3g.png" style="opacity: 1; cursor: pointer;">
+        </div>
+    </div>
+
+    <div class="container hand-tile">
+        <div class="row">
+            <img class="tile tile_selector tile_color_normal" src="./img/1f.png" style="opacity: 1; cursor: pointer;">
+            <img class="tile tile_selector tile_color_normal" src="./img/2f.png" style="opacity: 1; cursor: pointer;">
+        </div>
+    </div>
+
+    <div class="container function-panel">
+        <div class="row">
+            <div class="col-8 game-arg d-flex justify-content-around">
+                <div class="Riichii-panel">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-secondary">Ready Hand</button>
+                        <button type="button" class="btn btn-secondary">Double Ready</button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-secondary">One-Shot</button>
+                    </div>
+                </div>
+
+                <div class="RON-type-panel">
+                    <div class="btn-group-vertical">
+                        <button type="button" class="btn btn-secondary">Self-Pick</button>
+                        <button type="button" class="btn btn-secondary">RON</button>
+                    </div>
+                </div>
+
+                <div class="Win-arg-panel">
+                    <div class="col-12 btn-group" role="group">
+                        <button type="button" class="btn btn-secondary">Last Draw</button>
+                        <button type="button" class="btn btn-secondary">Last Tile</button>
+                    </div>
+                    <div class="col-12 btn-group" role="group">
+                        <button type="button" class="btn btn-secondary">Robbing Quad</button>
+                        <button type="button" class="btn btn-secondary">Dead Wall</button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row hand-tile">
-            
-        </div>
-
-        <div class="row game-arg">
-            
-        </div>
-
-        <div class="game-result">
-            
+            <div class="col-4 game-result">
+                
+            </div>
         </div>
     </div>
 
