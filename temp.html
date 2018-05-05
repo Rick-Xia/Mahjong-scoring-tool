@@ -20,27 +20,6 @@
 </head>
 
 <body>
-
-    <!--nav class="navbar navbar-inverse navbar-toggleable-sm fixed-top">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="#"><img src="img/logo.png" height="30" width="41"></a>
-            <div class="collapse navbar-collapse" id="Navbar">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" href="#"><span class="fa fa-home fa-lg"></span> Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-info fa-lg"></span> About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-list fa-lg"></span> Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
-                </ul>
-                <span class="navbar-text">
-                  <a id="loginRef"><span class="fa fa-sign-in"></span> Login</a>
-                </span>
-            </div>
-        </div>
-    </nav--> 
-
     <div class="container all-tile">
         <div class="row row-content d-flex justify-content-center">
             <img class="tile tile_selector tile_color_normal" src="./img/1m.png" style="opacity: 1; cursor: pointer;">
@@ -97,12 +76,12 @@
         <div class="row">
             <div class="col-8 game-arg d-flex justify-content-around">
                 <div class="Riichii-panel">
-                    <div class="btn-group" role="group">
+                    <div class="btn-group btn-block" role="group">
                         <button type="button" class="btn btn-secondary">Ready Hand</button>
                         <button type="button" class="btn btn-secondary">Double Ready</button>
                     </div>
                     <div>
-                        <button type="button" class="btn btn-secondary">One-Shot</button>
+                        <button type="button" class="btn btn-secondary btn-block">One-Shot</button>
                     </div>
                 </div>
 
@@ -114,13 +93,26 @@
                 </div>
 
                 <div class="Win-arg-panel">
-                    <div class="col-12 btn-group" role="group">
-                        <button type="button" class="btn btn-secondary">Last Draw</button>
-                        <button type="button" class="btn btn-secondary">Last Tile</button>
+                    <div class="row">
+                        <div class="btn-group btn-group-justified" role="group">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-secondary">Last Draw</button>
+                            </div>
+                            <div class="btn-group" role="group">    
+                                <button type="button" class="btn btn-secondary">Last Tile</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12 btn-group" role="group">
-                        <button type="button" class="btn btn-secondary">Robbing Quad</button>
-                        <button type="button" class="btn btn-secondary">Dead Wall</button>
+
+                    <div class="row">
+                        <div class="btn-group btn-group-justified" role="group">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-secondary">Robbing Quad</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-secondary">Dead Wall</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -130,9 +122,6 @@
             </div>
         </div>
     </div>
-
-    
- 
 
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->

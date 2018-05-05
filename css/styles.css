@@ -1,7 +1,15 @@
-.game-result {
-	background-color: #12D2A8;
-}
-
 .all-tile {
 	background-color: #512DA8;
+}
+
+.hand-tile {
+	background-color: #A812D2;
+}
+
+.function-panel {
+	background-color: #8A21D2;
+}
+
+.game-result {
+	background-color: #12D2A8;
 }
